@@ -5,7 +5,7 @@ from highrise import*
 from highrise import BaseBot,User,CurrencyItem,GetMessagesRequest,Item,Position
 from highrise.models import SessionMetadata
 
-moderators = ["iMooseMoo","Miwiii"]
+moderators = ["iMooseMoo","Miwiii","Thzin07_","Mahh___"]
 
 cara = ["😢caiu coroa mais sorte na proxima...","parabens você ganhou caiu cara..."]
 
@@ -56,14 +56,16 @@ react = ["wave","wink","thumbs","heart","clap"]
 class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         print("funcionando")  
-        await self.highrise.walk_to(Position(3.5 , 0.5 ,0.5 , "FrontRight"))
+        await self.highrise.walk_to(Position(11.5 , 3.75 , 1.5, "FrontRight"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala") 
         if user.username in moderators:
          await self.highrise.chat(f"🚫{user.username} Moderador(a) da sala\n[Entrou na sala]")
          
-        await self.highrise.send_whisper(user.id,f"🎀")
+        await self.highrise.chat(f"Bem vindo pobre❤️")
 
+        await self.highrise.chat(f"Se prescisar de ajuda use !help")
+            
         await self.highrise.send_emote(random.choice(emote))
         await self.highrise.send_emote(random.choice(emote),user.id)
         
@@ -3259,8 +3261,5 @@ Item(type='clothing', amount=1, id='bag-n_registrationavatars2023furrytail', acc
         
     async def on_user_leave(self, user: User) -> None:
         print(f"{user.username} saiu da sala")
-        await self.highrise.chat(f"🎀Volta @{user.username}! 😭")
+        await self.highrise.chat(f"🎀Volta @{user.username}!")
         await self.highrise.send_emote(random.choice(emote))
-
-        await asyncio.sleep(100)
-        await self.highrise.chat(f"🎀Estão gostando do bot?\n\n🎀Faça uma postagem usando a hastag: #iMooseMoo")
